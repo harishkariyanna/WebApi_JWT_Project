@@ -18,7 +18,6 @@ namespace WebApiProject.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // ====================== GymMember table config ======================
             modelBuilder.Entity<GymMember>(entity =>
             {
                 entity.HasKey(g => g.Id);
@@ -43,7 +42,6 @@ namespace WebApiProject.Data
                       .OnDelete(DeleteBehavior.Restrict);
             });
 
-            // ====================== User table config ======================
             modelBuilder.Entity<User>(entity =>
             {
                 entity.HasKey(u => u.Id);
@@ -53,7 +51,6 @@ namespace WebApiProject.Data
                 entity.Property(u => u.Role).IsRequired().HasMaxLength(20);
             });
 
-            // ====================== Category table config ======================
             modelBuilder.Entity<Category>(entity =>
             {
                 entity.HasKey(c => c.Id);
@@ -62,7 +59,6 @@ namespace WebApiProject.Data
                 entity.Property(c => c.Capacity).IsRequired();
             });
 
-            // ====================== Trainer table config ======================
             modelBuilder.Entity<Trainer>(entity =>
             {
                 entity.HasKey(t => t.Id);
@@ -77,7 +73,6 @@ namespace WebApiProject.Data
                       .OnDelete(DeleteBehavior.Restrict);
             });
 
-            // ====================== Seed Data ======================
 
             // Users
             modelBuilder.Entity<User>().HasData(
@@ -110,8 +105,7 @@ namespace WebApiProject.Data
             );
 
 
-            // GymMembers (✅ only one HasData, now with static JoinedDate values)
-            // GymMembers (✅ static JoinedDate values)
+            // GymMembers
             modelBuilder.Entity<GymMember>().HasData(
                 new GymMember { Id = 1, Name = "Arjun Mehta", Email = "arjun.mehta@example.com", Phone = "9876543210", Goals = "Lose weight", CategoryId = 3, TrainerId = 3, JoinedDate = new DateTime(2025, 07, 24) },
                 new GymMember { Id = 2, Name = "Priya Sharma", Email = "priya.sharma@example.com", Phone = "9876501234", Goals = "Increase flexibility", CategoryId = 1, TrainerId = 1, JoinedDate = new DateTime(2025, 08, 13) },

@@ -37,7 +37,7 @@ namespace WebApiProject.Services
             return members.Select(MapToDto);
         }
 
-        // Combined filter
+        // filter
         public async Task<IEnumerable<GymMemberDto>> SearchByTermAndDateRangeAsync(string term, DateTime? start, DateTime? end)
         {
             var members = await _gymMemberRepository.SearchByTermAndDateRangeAsync(term, start, end);

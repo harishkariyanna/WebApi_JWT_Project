@@ -40,11 +40,11 @@ namespace WebApiProject.Services
                     Name = t.Name,
                     Email = t.Email,
                     Experience = t.Experience
-                }).ToList() ?? new List<TrainerDto>() // Ensure no null
+                }).ToList() ?? new List<TrainerDto>() 
             });
         }
 
-        // Get single category (without trainer details)
+        // Get single category 
         public async Task<CategoryDto?> GetByIdAsync(int id)
         {
             var category = await _categoryRepository.GetByIdAsync(id);
@@ -72,7 +72,7 @@ namespace WebApiProject.Services
                     Name = t.Name,
                     Email = t.Email,
                     Experience = t.Experience
-                }).ToList() ?? new List<TrainerDto>() // Safe null handling
+                }).ToList() ?? new List<TrainerDto>() 
             };
         }
 
@@ -84,7 +84,7 @@ namespace WebApiProject.Services
                 Name = dto.Name,
                 Description = dto.Description,
                 Capacity = dto.Capacity,
-                CurrentMembers = 0 // Initialize to 0
+                CurrentMembers = 0 
             };
 
             var created = await _categoryRepository.AddAsync(category);
@@ -111,7 +111,7 @@ namespace WebApiProject.Services
             return await _categoryRepository.DeleteAsync(id);
         }
 
-        // Helper method to map Category → CategoryDto
+        // map Category → CategoryDto
         private CategoryDto MapToDto(Category c)
         {
             return new CategoryDto

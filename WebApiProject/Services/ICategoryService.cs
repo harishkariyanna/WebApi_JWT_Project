@@ -4,6 +4,7 @@ namespace WebApiProject.Services
 {
     public interface ICategoryService
     {
+        Task<IEnumerable<Category>> GetAllWithTrainersAsync();
         Task<CategoryDto?> GetByIdAsync(int id);
         Task<IEnumerable<CategoryDto>> GetAllAsync();
         Task<IEnumerable<CategoryDto>> SearchAsync(string term);
