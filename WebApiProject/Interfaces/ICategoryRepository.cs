@@ -11,7 +11,7 @@ namespace WebApiProject.Repositories
         Task<Category> UpdateAsync(Category entity);
         Task<bool> DeleteAsync(int id);
 
-        // ✅ Add these for trainers
+        // Add these for trainers
         Task<IEnumerable<Category>> GetAllWithTrainersAsync();
         Task<Category?> GetByIdWithTrainersAsync(int id);
     }

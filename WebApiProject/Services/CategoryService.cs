@@ -13,14 +13,14 @@ namespace WebApiProject.Services
             _categoryRepository = categoryRepository;
         }
 
-        // ✅ Get all categories (without trainer details)
+        // Get all categories (without trainer details)
         public async Task<IEnumerable<CategoryDto>> GetAllAsync()
         {
             var categories = await _categoryRepository.GetAllAsync();
             return categories.Select(MapToDto);
         }
 
-        // ✅ Get all categories WITH trainer details
+        // Get all categories WITH trainer details
         public async Task<IEnumerable<CategoryWithTrainerDto>> GetAllWithTrainersAsync()
         {
             var categories = await _categoryRepository.GetAllWithTrainersAsync();
@@ -44,14 +44,14 @@ namespace WebApiProject.Services
             });
         }
 
-        // ✅ Get single category (without trainer details)
+        // Get single category (without trainer details)
         public async Task<CategoryDto?> GetByIdAsync(int id)
         {
             var category = await _categoryRepository.GetByIdAsync(id);
             return category is null ? null : MapToDto(category);
         }
 
-        // ✅ Get single category WITH trainers
+        // Get single category WITH trainers
         public async Task<CategoryWithTrainerDto?> GetByIdWithTrainersAsync(int id)
         {
             var category = await _categoryRepository.GetByIdWithTrainersAsync(id);
@@ -76,7 +76,7 @@ namespace WebApiProject.Services
             };
         }
 
-        // ✅ Create category
+        // Create category
         public async Task<CategoryDto> CreateAsync(CategoryCreateDto dto)
         {
             var category = new Category
@@ -91,7 +91,7 @@ namespace WebApiProject.Services
             return MapToDto(created);
         }
 
-        // ✅ Update category
+        // Update category
         public async Task<CategoryDto?> UpdateAsync(int id, CategoryUpdateDto dto)
         {
             var category = await _categoryRepository.GetByIdAsync(id);
@@ -105,13 +105,13 @@ namespace WebApiProject.Services
             return MapToDto(updated);
         }
 
-        // ✅ Delete category
+        // Delete category
         public async Task<bool> DeleteAsync(int id)
         {
             return await _categoryRepository.DeleteAsync(id);
         }
 
-        // ✅ Helper method to map Category → CategoryDto
+        // Helper method to map Category → CategoryDto
         private CategoryDto MapToDto(Category c)
         {
             return new CategoryDto

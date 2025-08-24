@@ -14,7 +14,7 @@ public class TrainerController : ControllerBase
         _trainerService = trainerService;
     }
 
-    // ✅ Get all trainers with their category
+    //Get all trainers with their category
     [HttpGet]
     [Authorize]
     public async Task<IActionResult> GetAll()
@@ -40,7 +40,7 @@ public class TrainerController : ControllerBase
         return Ok(result);
     }
 
-    // ✅ Get single trainer by ID
+    //Get single trainer by ID
     [HttpGet("{id}")]
     [Authorize]
     public async Task<IActionResult> GetById(int id)
@@ -67,7 +67,7 @@ public class TrainerController : ControllerBase
         return Ok(result);
     }
 
-    // ✅ Create new trainer (Admin only)
+    //Create new trainer (Admin only)
     [HttpPost]
     [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Create(TrainerCreateDto dto)
@@ -76,7 +76,7 @@ public class TrainerController : ControllerBase
         return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
     }
 
-    // ✅ Update trainer (Admin only)
+    //Update trainer (Admin only)
     [HttpPut("{id}")]
     [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Update(int id, TrainerUpdateDto dto)
@@ -86,7 +86,7 @@ public class TrainerController : ControllerBase
         return Ok(updated);
     }
 
-    // ✅ Delete trainer (Admin only)
+    //Delete trainer (Admin only)
     [HttpDelete("{id}")]
     [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Delete(int id)

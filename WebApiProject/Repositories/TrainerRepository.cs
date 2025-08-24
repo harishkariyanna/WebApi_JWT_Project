@@ -61,7 +61,7 @@ namespace WebApiProject.Repositories
                 .ToListAsync();
         }
 
-        // ✅ Include Category (single) for each Trainer
+        // Include Category (single) for each Trainer
         public async Task<IEnumerable<Trainer>> GetAllWithCategoriesAsync()
         {
             return await _context.Trainers

@@ -23,21 +23,21 @@ namespace WebApiProject.Services
             return await _gymMemberRepository.GetByIdWithCategoryAsync(id);
         }
 
-        // 🔍 Search by term
+        // Search by term
         public async Task<IEnumerable<GymMemberDto>> SearchAsync(string term)
         {
             var members = await _gymMemberRepository.SearchAsync(term);
             return members.Select(MapToDto);
         }
 
-        // 📅 Exact join date
+        // Exact join date
         public async Task<IEnumerable<GymMemberDto>> GetByJoinedDateAsync(DateTime date)
         {
             var members = await _gymMemberRepository.GetByJoinedDateAsync(date);
             return members.Select(MapToDto);
         }
 
-        // 🔍+📅 Combined filter
+        // Combined filter
         public async Task<IEnumerable<GymMemberDto>> SearchByTermAndDateRangeAsync(string term, DateTime? start, DateTime? end)
         {
             var members = await _gymMemberRepository.SearchByTermAndDateRangeAsync(term, start, end);

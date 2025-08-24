@@ -6,7 +6,7 @@ namespace WebApiProject.Repositories
     {
         Task<User?> GetByIdAsync(int id);
         Task<User?> GetByUsernameAsync(string username);
-        Task<User?> GetByEmailAsync(string email); // ✅ Add this
+        Task<User?> GetByEmailAsync(string email); 
         Task<IEnumerable<User>> GetAllAsync();
         Task<User> AddAsync(User entity);
         Task<User> UpdateAsync(User entity);

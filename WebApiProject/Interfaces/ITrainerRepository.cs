@@ -14,7 +14,7 @@ namespace WebApiProject.Repositories
         // Extra methods
         Task<IEnumerable<Trainer>> GetTrainersByCategoryIdAsync(int categoryId);
 
-        // ✅ New methods for fetching related Categories
+        // New methods for fetching related Categories
         Task<IEnumerable<Trainer>> GetAllWithCategoriesAsync();
         Task<Trainer?> GetByIdWithCategoriesAsync(int id);
     }

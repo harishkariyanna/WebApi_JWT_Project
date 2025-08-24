@@ -16,7 +16,7 @@ namespace WebApiProject.Controllers
             _service = service;
         }
 
-        // ✅ Public: anyone can view users (for testing)
+        // Public: anyone can view users (for testing)
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> GetAll()
@@ -33,7 +33,7 @@ namespace WebApiProject.Controllers
             return Ok(user);
         }
 
-        // ✅ Admin only for creating users
+        // Admin only for creating users
         [HttpPost]
 
         [AllowAnonymous]
@@ -43,7 +43,7 @@ namespace WebApiProject.Controllers
             return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
         }
 
-        // ✅ Admin only for updating users
+        // Admin only for updating users
         [HttpPut("{id}")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Update(int id, UserUpdateDto dto)
@@ -53,7 +53,7 @@ namespace WebApiProject.Controllers
             return Ok(updated);
         }
 
-        // ✅ Admin only for deleting users
+        // Admin only for deleting users
         [HttpDelete("{id}")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)

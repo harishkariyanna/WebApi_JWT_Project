@@ -14,7 +14,7 @@ public class CategoryController : ControllerBase
         _categoryService = categoryService;
     }
 
-    // ✅ Get all categories with trainer details
+    // Get all categories with trainer details
     [HttpGet]
     [Authorize] // Only requires a valid token
     public async Task<IActionResult> GetAll()
@@ -38,7 +38,7 @@ public class CategoryController : ControllerBase
         return Ok(result);
     }
 
-    // ✅ Get single category with trainer details
+    // Get single category with trainer details
     [HttpGet("{id}")]
     [Authorize]
     public async Task<IActionResult> GetById(int id)
@@ -63,7 +63,7 @@ public class CategoryController : ControllerBase
         return Ok(result);
     }
 
-    // ✅ Admin-only operations
+    // Admin-only operations
     [HttpPost]
     [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Create(CategoryCreateDto dto)

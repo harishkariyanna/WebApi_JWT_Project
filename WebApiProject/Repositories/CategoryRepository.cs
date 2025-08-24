@@ -13,19 +13,19 @@ namespace WebApiProject.Repositories
             _context = context;
         }
 
-        // ✅ Get single category by ID (without trainers)
+        // Get single category by ID (without trainers)
         public async Task<Category?> GetByIdAsync(int id)
         {
             return await _context.Categories.FindAsync(id);
         }
 
-        // ✅ Get all categories (without trainers)
+        // Get all categories (without trainers)
         public async Task<IEnumerable<Category>> GetAllAsync()
         {
             return await _context.Categories.ToListAsync();
         }
 
-        // ✅ Get all categories with trainers included
+        // Get all categories with trainers included
         public async Task<IEnumerable<Category>> GetAllWithTrainersAsync()
         {
             return await _context.Categories
@@ -33,7 +33,7 @@ namespace WebApiProject.Repositories
                 .ToListAsync();
         }
 
-        // ✅ Get single category by ID with trainers included
+        // Get single category by ID with trainers included
         public async Task<Category?> GetByIdWithTrainersAsync(int id)
         {
             return await _context.Categories
@@ -41,7 +41,7 @@ namespace WebApiProject.Repositories
                 .FirstOrDefaultAsync(c => c.Id == id);
         }
 
-        // ✅ Search categories by name
+        // Search categories by name
         public async Task<IEnumerable<Category>> SearchAsync(string term)
         {
             return await _context.Categories
@@ -49,7 +49,7 @@ namespace WebApiProject.Repositories
                 .ToListAsync();
         }
 
-        // ✅ Add a new category
+        // Add a new category
         public async Task<Category> AddAsync(Category entity)
         {
             _context.Categories.Add(entity);
@@ -57,7 +57,7 @@ namespace WebApiProject.Repositories
             return entity;
         }
 
-        // ✅ Update an existing category
+        // Update an existing category
         public async Task<Category> UpdateAsync(Category entity)
         {
             _context.Categories.Update(entity);
@@ -65,7 +65,7 @@ namespace WebApiProject.Repositories
             return entity;
         }
 
-        // ✅ Delete a category
+        // Delete a category
         public async Task<bool> DeleteAsync(int id)
         {
             var category = await _context.Categories.FindAsync(id);

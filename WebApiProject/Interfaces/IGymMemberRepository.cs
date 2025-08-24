@@ -15,7 +15,7 @@ namespace WebApiProject.Repositories
         Task<IEnumerable<GymMember>> GetAllWithCategoryAsync();
         Task<GymMember?> GetByIdWithCategoryAsync(int id);
 
-        // ✅ New
+        // New
         Task<IEnumerable<GymMember>> GetByJoinedDateAsync(DateTime date);
         Task<IEnumerable<GymMember>> GetByJoinedDateRangeAsync(DateTime start, DateTime end);
         Task<IEnumerable<GymMember>> SearchByTermAndDateRangeAsync(string term, DateTime? start, DateTime? end);

@@ -63,7 +63,7 @@ namespace WebApiProject.Repositories
                 .ToListAsync();
         }
 
-        // ✅ Include Category and Trainer
+        // Include Category and Trainer
         public async Task<IEnumerable<GymMember>> GetAllWithCategoryAsync()
         {
             return await _context.GymMembers
@@ -80,7 +80,7 @@ namespace WebApiProject.Repositories
                 .FirstOrDefaultAsync(m => m.Id == id);
         }
 
-        // 📅 New: Get members by a specific join date
+        //Get members by a specific join date
         public async Task<IEnumerable<GymMember>> GetByJoinedDateAsync(DateTime date)
         {
             var start = date.Date;
@@ -90,7 +90,7 @@ namespace WebApiProject.Repositories
                 .ToListAsync();
         }
 
-        // 📅 New: Get members in a date range
+        //Get members in a date range
         public async Task<IEnumerable<GymMember>> GetByJoinedDateRangeAsync(DateTime start, DateTime end)
         {
             var startDate = start.Date;
@@ -100,7 +100,7 @@ namespace WebApiProject.Repositories
                 .ToListAsync();
         }
 
-        // 🔍+📅 New: Search with optional term + optional date range
+        //Search with optional term + optional date range
         public async Task<IEnumerable<GymMember>> SearchByTermAndDateRangeAsync(string term, DateTime? start, DateTime? end)
         {
             var query = _context.GymMembers.AsQueryable();

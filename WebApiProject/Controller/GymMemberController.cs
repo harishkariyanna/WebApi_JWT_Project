@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using WebApiProject.DTOs;              // ✅ Make sure this is present
+using WebApiProject.DTOs;              //Make sure this is present
 using WebApiProject.Services;
-using System;                          // ✅ Needed for DateTime
+using System;                          //Needed for DateTime
 
 [ApiController]
 [Route("api/[controller]")]
@@ -15,7 +15,6 @@ public class GymMemberController : ControllerBase
         _gymMemberService = gymMemberService;
     }
 
-    // ✅ Get all gym members with category details
     // GET all members
     [HttpGet]
     [Authorize]
@@ -43,7 +42,7 @@ public class GymMemberController : ControllerBase
     }
 
 
-    // ✅ Get single gym member
+    //Get single gym member
     [HttpGet("{id}")]
     [Authorize]
     public async Task<IActionResult> GetById(int id)
@@ -71,7 +70,7 @@ public class GymMemberController : ControllerBase
         return Ok(result);
     }
 
-    // ✅ Search by term (Name, Email, Goals)
+    //Search by term (Name, Email, Goals)
     [HttpGet("search")]
     [Authorize]
     public async Task<IActionResult> Search([FromQuery] string term)
@@ -80,7 +79,7 @@ public class GymMemberController : ControllerBase
         return Ok(results);
     }
 
-    // ✅ Filter by exact join date
+    //Filter by exact join date
     [HttpGet("joined-on")]
     [Authorize]
     public async Task<IActionResult> GetByJoinedDate([FromQuery] DateTime date)
@@ -89,7 +88,7 @@ public class GymMemberController : ControllerBase
         return Ok(results);
     }
 
-    // ✅ Filter by date range + optional term
+    //Filter by date range + optional term
     [HttpGet("filter")]
     [Authorize]
     public async Task<IActionResult> Filter([FromQuery] string? term, [FromQuery] DateTime? start, [FromQuery] DateTime? end)
@@ -101,7 +100,7 @@ public class GymMemberController : ControllerBase
         return Ok(results);
     }
 
-    // ✅ Admin operations
+    //Admin operations
     [HttpPost]
     [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Create([FromBody] GymMemberCreateDto dto)
