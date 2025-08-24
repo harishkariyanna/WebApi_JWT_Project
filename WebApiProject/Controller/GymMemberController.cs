@@ -15,6 +15,7 @@ public class GymMemberController : ControllerBase
         _gymMemberService = gymMemberService;
     }
 
+    // Get all gym members with category details
     // GET all members
     [HttpGet]
     [Authorize]

@@ -7,13 +7,13 @@ namespace WebApiProject.Services
     public class TrainerService
     {
         private readonly ITrainerRepository _trainerRepository;
-
+        
         public TrainerService(ITrainerRepository trainerRepository)
         {
             _trainerRepository = trainerRepository;
         }
 
-        // ✅ Regular GetAll
+        // Regular GetAll
         public async Task<IEnumerable<TrainerDto>> GetAllAsync()
         {
             var trainers = await _trainerRepository.GetAllAsync();
@@ -27,7 +27,7 @@ namespace WebApiProject.Services
             });
         }
 
-        // ✅ Include related GymMembers & Categories
+        // Include related GymMembers & Categories
         public async Task<IEnumerable<Trainer>> GetAllWithCategoriesAsync()
         {
             return await _trainerRepository.GetAllWithCategoriesAsync();
@@ -38,7 +38,7 @@ namespace WebApiProject.Services
             return await _trainerRepository.GetByIdWithCategoriesAsync(id);
         }
 
-        // ✅ CRUD operations
+        // CRUD operations
         public async Task<TrainerDto> CreateAsync(TrainerCreateDto dto)
         {
             var trainer = new Trainer

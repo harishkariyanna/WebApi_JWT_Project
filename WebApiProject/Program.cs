@@ -9,23 +9,23 @@ using WebApiProject.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ✅ DbContext
+// DbContext
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// ✅ Repositories
+// Repositories
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<ITrainerRepository, TrainerRepository>();
 builder.Services.AddScoped<IGymMemberRepository, GymMemberRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
-// ✅ Services
+// Services
 builder.Services.AddScoped<CategoryService>();
 builder.Services.AddScoped<TrainerService>();
 builder.Services.AddScoped<GymMemberService>();
 builder.Services.AddScoped<UserService>();
 
-// ✅ JWT Authentication
+// JWT Authentication
 var jwtKey = builder.Configuration["Jwt:Key"]
              ?? throw new InvalidOperationException("JWT Key missing");
 var jwtIssuer = builder.Configuration["Jwt:Issuer"]
@@ -47,21 +47,21 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
-// ✅ Authorization Policies
+// Authorization Policies
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
     options.AddPolicy("UserOnly", policy => policy.RequireRole("User"));
 });
 
-// ✅ Controllers + Swagger
+// Controllers + Swagger
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Gym API", Version = "v1" });
 
-    // ✅ JWT Auth Setup for Swagger (No custom filter needed)
+    //JWT Auth Setup for Swagger (No custom filter needed)
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
@@ -90,7 +90,7 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
-// ✅ Middleware
+// Middleware
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
